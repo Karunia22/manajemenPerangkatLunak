@@ -12,7 +12,7 @@
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;">
-    <p>Lasomu pada gege</p>
+
 </body>
 
 </html>
