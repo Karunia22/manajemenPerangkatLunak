@@ -8,12 +8,11 @@
     <title>Document</title>
 </head>
 
-<body
-    style="background-image: url('{{ asset('gambar/landingpage.png') }}');background-size: cover;
+<body style="background-image: url('{{ asset('gambar/landingpage.png') }}');background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh;">
-
+    <p>Lasomu pada gege</p>
 </body>
 
 </html>
