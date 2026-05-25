@@ -35,15 +35,15 @@
                 </a>
 
                 @auth
-                    <a href="{{ url('/dashboard') }}"
-                        class="bg-amber-700 hover:bg-amber-600 px-5 py-2 rounded-lg transition">
-                        Dashboard
-                    </a>
+                <a href="{{ route('dashboard') }}"
+                    class="bg-amber-700 hover:bg-amber-600 px-5 py-2 rounded-lg transition">
+                    Dashboard
+                </a>
                 @else
-                    <a href="{{ route('login') }}"
-                        class="border border-amber-600 px-5 py-2 rounded-lg hover:bg-amber-700 transition">
-                        Login
-                    </a>
+                <a href="{{ route('login') }}"
+                    class="border border-amber-600 px-5 py-2 rounded-lg hover:bg-amber-700 transition">
+                    Login
+                </a>
                 @endauth
 
             </div>
@@ -51,8 +51,7 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative min-h-screen bg-cover bg-center flex items-center pt-24"
-        style="
+    <section class="relative min-h-screen bg-cover bg-center flex items-center pt-24" style="
         background-image: url('{{ asset('storage/gambar/benner.png') }}');
         height: 100vh;
         background-size: cover;

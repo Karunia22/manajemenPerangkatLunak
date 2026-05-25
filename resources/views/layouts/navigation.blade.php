@@ -9,22 +9,18 @@
             <div class="flex items-center gap-10">
 
                 <!-- LOGO -->
-                <a href="{{ route('dashboard') }}"
-                    class="flex items-center gap-4">
+                <a href="{{ route('dashboard') }}" class="flex items-center gap-4">
 
-                    <div
-                        class="w-12 h-12 rounded-2xl overflow-hidden border border-amber-700 shadow-lg">
+                    <div class="w-12 h-12 rounded-2xl overflow-hidden border border-amber-700 shadow-lg">
 
-                        <img src="{{ asset('storage/gambar/museum.jpg') }}"
-                            class="w-full h-full object-cover"
+                        <img src="{{ asset('storage/gambar/museum.jpg') }}" class="w-full h-full object-cover"
                             alt="Museum">
 
                     </div>
 
                     <div>
 
-                        <h1
-                            class="text-lg tracking-[0.2em] text-white font-light">
+                        <h1 class="text-lg tracking-[0.2em] text-white font-light">
 
                             MUSEUM
 
@@ -41,24 +37,15 @@
                 <!-- MENU -->
                 <div class="hidden sm:flex items-center gap-8">
 
-                    <a href="{{ route('dashboard') }}"
-                        class="text-gray-100 hover:text-amber-400 transition">
+                    <a href="{{ route('dashboard') }}" class="text-gray-100 hover:text-amber-400 transition">
 
                         Beranda
 
                     </a>
 
-                    <a href="{{ route('koleksi') }}"
-                        class="text-gray-100 hover:text-amber-400 transition">
+                    <a href="{{ route('koleksi') }}" class="text-gray-100 hover:text-amber-400 transition">
 
                         Koleksi
-
-                    </a>
-
-                    <a href="#tentang"
-                        class="text-gray-100 hover:text-amber-400 transition">
-
-                        Tentang
 
                     </a>
 
@@ -72,9 +59,7 @@
                 <!-- USER DROPDOWN -->
                 <div class="relative" x-data="{ dropdownOpen: false }">
 
-                    <button
-                        @click="dropdownOpen = !dropdownOpen"
-                        class="flex items-center gap-3">
+                    <button @click="dropdownOpen = !dropdownOpen" class="flex items-center gap-3">
 
                         <div
                             class="w-11 h-11 rounded-full bg-amber-700 flex items-center justify-center text-white font-semibold">
@@ -98,9 +83,7 @@
                     </button>
 
                     <!-- DROPDOWN -->
-                    <div x-show="dropdownOpen"
-                        @click.away="dropdownOpen = false"
-                        x-transition
+                    <div x-show="dropdownOpen" @click.away="dropdownOpen = false" x-transition
                         class="absolute right-0 mt-4 w-56 bg-[#2b1d13] border border-amber-900 rounded-2xl shadow-2xl overflow-hidden">
 
                         <a href="{{ route('profile.edit') }}"
@@ -110,8 +93,7 @@
 
                         </a>
 
-                        <form method="POST"
-                            action="{{ route('logout') }}">
+                        <form method="POST" action="{{ route('logout') }}">
 
                             @csrf
 
@@ -133,29 +115,16 @@
             <!-- MOBILE BUTTON -->
             <div class="sm:hidden">
 
-                <button @click="open = !open"
-                    class="text-white">
+                <button @click="open = !open" class="text-white">
 
-                    <svg class="h-6 w-6"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 24 24">
+                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
 
-                        <path
-                            :class="{ 'hidden': open, 'inline-flex': !open }"
-                            class="inline-flex"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
+                        <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
+                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
 
-                        <path
-                            :class="{ 'hidden': !open, 'inline-flex': open }"
-                            class="hidden"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
+                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
+                            stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 
                     </svg>
 
@@ -168,47 +137,39 @@
     </div>
 
     <!-- MOBILE MENU -->
-    <div x-show="open"
-        x-transition
-        class="sm:hidden bg-[#24170f]/95 backdrop-blur-md border-t border-amber-900">
+    <div x-show="open" x-transition class="sm:hidden bg-[#24170f]/95 backdrop-blur-md border-t border-amber-900">
 
         <div class="px-6 py-6 space-y-5">
 
-            <a href="{{ route('dashboard') }}"
-                class="block text-gray-100 hover:text-amber-400 transition">
+            <a href="{{ route('dashboard') }}" class="block text-gray-100 hover:text-amber-400 transition">
 
                 Beranda
 
             </a>
 
-            <a href="{{ route('koleksi') }}"
-                class="block text-gray-100 hover:text-amber-400 transition">
+            <a href="{{ route('koleksi') }}" class="block text-gray-100 hover:text-amber-400 transition">
 
                 Koleksi
 
             </a>
 
-            <a href="#tentang"
-                class="block text-gray-100 hover:text-amber-400 transition">
+            <a href="#tentang" class="block text-gray-100 hover:text-amber-400 transition">
 
                 Tentang
 
             </a>
 
-            <a href="{{ route('profile.edit') }}"
-                class="block text-gray-100 hover:text-amber-400 transition">
+            <a href="{{ route('profile.edit') }}" class="block text-gray-100 hover:text-amber-400 transition">
 
                 Profile
 
             </a>
 
-            <form method="POST"
-                action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('logout') }}">
 
                 @csrf
 
-                <button type="submit"
-                    class="text-red-400">
+                <button type="submit" class="text-red-400">
 
                     Logout
 

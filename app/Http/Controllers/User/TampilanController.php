@@ -3,15 +3,25 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class TampilanController extends Controller
 {
     //
-    public function koleksi(){
+    public function index()
+    {
+        // dd(auth()->user()->role);
+
+        return view('dashboard');
+    }
+
+    public function koleksi()
+    {
+        // dd(auth()->user()->role);
         return view('user.koleksi');
     }
-    public function detailKoleksi(){
+
+    public function detailKoleksi()
+    {
         return view('user.detailkoleksi');
     }
 }

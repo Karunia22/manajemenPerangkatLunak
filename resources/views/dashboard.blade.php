@@ -7,8 +7,7 @@
 
             <!-- Background -->
             <div class="absolute inset-0">
-                <img src="{{ asset('storage/gambar/benner.png') }}"
-                    class="w-full h-full object-cover opacity-30"
+                <img src="{{ asset('storage/gambar/benner.png') }}" class="w-full h-full object-cover opacity-30"
                     alt="">
             </div>
 
@@ -28,8 +27,7 @@
                             Mamasa, Sulawesi Barat
                         </span>
 
-                        <h1
-                            class="mt-8 text-5xl md:text-6xl font-extralight leading-tight tracking-wide">
+                        <h1 class="mt-8 text-5xl md:text-6xl font-extralight leading-tight tracking-wide">
 
                             Jelajahi Kekayaan
                             Budaya &
@@ -55,12 +53,7 @@
 
                             </a>
 
-                            <a href="#tentang"
-                                class="border border-amber-700 hover:bg-amber-700/20 transition px-8 py-4 rounded-2xl">
 
-                                Tentang Museum
-
-                            </a>
 
                         </div>
 
@@ -72,8 +65,7 @@
                         <div
                             class="w-[420px] h-[500px] rounded-[3rem] overflow-hidden border border-amber-800 shadow-2xl">
 
-                            <img src="{{ asset('storage/gambar/museum.jpg') }}"
-                                class="w-full h-full object-cover"
+                            <img src="{{ asset('storage/gambar/museum.jpg') }}" class="w-full h-full object-cover"
                                 alt="">
 
                         </div>
@@ -94,8 +86,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
 
                     <!-- Item -->
-                    <div
-                        class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
+                    <div class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
 
                         <h2 class="text-4xl font-light text-amber-400">
                             250+
@@ -108,8 +99,7 @@
                     </div>
 
                     <!-- Item -->
-                    <div
-                        class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
+                    <div class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
 
                         <h2 class="text-4xl font-light text-amber-400">
                             15
@@ -122,8 +112,7 @@
                     </div>
 
                     <!-- Item -->
-                    <div
-                        class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
+                    <div class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
 
                         <h2 class="text-4xl font-light text-amber-400">
                             120+
@@ -136,8 +125,7 @@
                     </div>
 
                     <!-- Item -->
-                    <div
-                        class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
+                    <div class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
 
                         <h2 class="text-4xl font-light text-amber-400">
                             Digital
@@ -183,8 +171,7 @@
                         <div class="h-72 overflow-hidden">
 
                             <img src="{{ asset('storage/gambar/museum.jpg') }}"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
-                                alt="">
+                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
 
                         </div>
 
@@ -213,40 +200,7 @@
                     </div>
 
                     <!-- Card -->
-                    <div
-                        class="bg-[#2b1d13] border border-amber-900 rounded-3xl overflow-hidden shadow-2xl group hover:-translate-y-2 transition duration-500">
 
-                        <div class="h-72 overflow-hidden">
-
-                            <img src="{{ asset('storage/gambar/benner.png') }}"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
-                                alt="">
-
-                        </div>
-
-                        <div class="p-8">
-
-                            <span
-                                class="px-3 py-1 bg-amber-700/20 border border-amber-700 rounded-full text-xs text-amber-300">
-
-                                Senjata Tradisional
-
-                            </span>
-
-                            <h3 class="mt-5 text-2xl">
-                                Mandau Mamasa
-                            </h3>
-
-                            <p class="mt-4 text-gray-400 leading-relaxed">
-
-                                Senjata tradisional masyarakat Mamasa
-                                yang memiliki nilai sejarah dan spiritual.
-
-                            </p>
-
-                        </div>
-
-                    </div>
 
                     <!-- Card -->
                     <div
@@ -255,8 +209,7 @@
                         <div class="h-72 overflow-hidden">
 
                             <img src="{{ asset('storage/gambar/museum.jpg') }}"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
-                                alt="">
+                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
 
                         </div>
 
@@ -300,8 +253,7 @@
                     <!-- About -->
                     <div>
 
-                        <h2
-                            class="text-2xl font-light tracking-widest text-amber-400">
+                        <h2 class="text-2xl font-light tracking-widest text-amber-400">
 
                             Museum Demmatande
 
@@ -375,8 +327,7 @@
                 </div>
 
                 <!-- Bottom -->
-                <div
-                    class="border-t border-gray-800 mt-14 pt-8 text-center text-gray-500">
+                <div class="border-t border-gray-800 mt-14 pt-8 text-center text-gray-500">
 
                     © {{ date('Y') }}
                     Museum Negeri Demmatande Mamasa —
