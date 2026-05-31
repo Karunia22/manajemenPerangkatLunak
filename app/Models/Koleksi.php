@@ -13,6 +13,16 @@ class Koleksi extends Model
     //
     public function kategori()
     {
-        return $this->belongsTo(Kategori::class);
+        return $this->belongsTo(Kategori::class, 'id_kategori');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function detail()
+    {
+        return $this->hasOne(DetailKoleksi::class, 'id_koleksi');
     }
 }

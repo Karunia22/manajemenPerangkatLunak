@@ -32,7 +32,7 @@ class AuthenticatedSessionController extends Controller
             return redirect()->route('indexA');
         }
         if (auth()->user()->role == 'pengelola') {
-            return redirect()->route('indexP');
+            return redirect()->route('index');
         }
         if (auth()->user()->role == 'pengunjung') {
             return redirect()->route('dashboard');

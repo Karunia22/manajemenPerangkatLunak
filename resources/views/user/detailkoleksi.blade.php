@@ -20,21 +20,6 @@
             <!-- Content -->
             <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20">
                 <!-- Back -->
-                <a href="{{ route('koleksi') }}"
-                    class="inline-flex items-center gap-3 text-gray-300 hover:text-amber-400 transition mb-12">
-
-                    <!-- Icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-
-                    </svg>
-
-                    Kembali ke Koleksi
-
-                </a>
-
                 <!-- Detail -->
                 <div class="grid lg:grid-cols-2 gap-16 items-start">
 
@@ -43,7 +28,7 @@
 
                         <div class="rounded-[2rem] overflow-hidden border border-amber-900 shadow-2xl">
 
-                            <img src="{{ asset('storage/gambar/museum.jpg') }}"
+                            <img src="{{ asset('storage/'. $koleksi->gambar) }}"
                                 class="w-full h-[600px] object-cover hover:scale-105 transition duration-700" alt="">
 
                         </div>
@@ -59,14 +44,14 @@
                         <span
                             class="px-4 py-2 bg-amber-700/20 border border-amber-700 rounded-full text-sm text-amber-300">
 
-                            Pakaian Adat
+                            {{$koleksi->kategori->jenis_kategori}}
 
                         </span>
 
                         <!-- Title -->
                         <h1 class="mt-8 text-5xl font-extralight tracking-wide">
 
-                            Baju Pokko
+                            {{$koleksi->nama_koleksi}}
 
                         </h1>
 
@@ -74,15 +59,11 @@
                         <div class="mt-10">
 
                             <h2 class="text-2xl text-amber-400 font-light">
-                                Deskripsi Koleksi
-                            </h2>
+                                Deskripsi </h2>
 
                             <p class="mt-5 text-lg text-gray-300 leading-relaxed">
 
-                                Baju Pokko merupakan pakaian adat perempuan khas Mamasa
-                                yang memiliki bentuk sederhana namun elegan. Pakaian ini
-                                dibuat menggunakan kain tradisional dengan motif khas budaya
-                                Mamasa yang diwariskan secara turun-temurun.
+                                {{$koleksi->detail->deskripsi}}
 
                             </p>
 
@@ -92,15 +73,11 @@
                         <div class="mt-10">
 
                             <h2 class="text-2xl text-amber-400 font-light">
-                                Sejarah Koleksi
-                            </h2>
+                                Sejarah </h2>
 
                             <p class="mt-5 text-lg text-gray-300 leading-relaxed">
 
-                                Baju Pokko digunakan masyarakat Mamasa sejak zaman dahulu
-                                dalam berbagai kegiatan adat, ritual budaya, serta acara
-                                penting masyarakat setempat. Hingga kini koleksi ini menjadi
-                                simbol identitas budaya Mamasa.
+                                {{$koleksi->detail->sejarah}}
 
                             </p>
 
@@ -117,23 +94,12 @@
                                 </span>
 
                                 <span class="text-white">
-                                    Mamasa, Sulawesi Barat
+                                    {{$koleksi->detail->asal_daerah}}
                                 </span>
 
                             </div>
 
-                            <!-- Kategori -->
-                            <div class="flex justify-between items-center px-8 py-5">
 
-                                <span class="text-gray-400">
-                                    Kategori
-                                </span>
-
-                                <span class="text-white">
-                                    Pakaian Adat
-                                </span>
-
-                            </div>
 
                         </div>
 
@@ -170,6 +136,7 @@
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 
                     <!-- Card -->
+                    @forelse ($koleksiTerkait as $item)
                     <div
                         class="group bg-[#2b1d13] border border-amber-900 rounded-3xl overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-500">
 
@@ -198,90 +165,14 @@
                         </div>
 
                     </div>
-
-                    <!-- Card -->
+                    @empty
                     <div
-                        class="group bg-[#2b1d13] border border-amber-900 rounded-3xl overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-500">
-
-                        <div class="h-64 overflow-hidden">
-
-                            <img src="{{ asset('storage/gambar/benner.png') }}"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
-
-                        </div>
-
-                        <div class="p-6">
-
-                            <span
-                                class="px-3 py-1 bg-amber-700/20 border border-amber-700 rounded-full text-xs text-amber-300">
-
-                                Alat Musik
-
-                            </span>
-
-                            <h3 class="mt-4 text-xl">
-                                Kecapi Tradisional
-                            </h3>
-
-                        </div>
-
+                        class="col-span-full text-center py-12 border border-dashed border-amber-900/30 rounded-xl bg-[#2b1d13]/20">
+                        <p class="text-gray-400 text-base">Koleksi belum ada.</p>
                     </div>
+                    @endforelse
 
-                    <!-- Card -->
-                    <div
-                        class="group bg-[#2b1d13] border border-amber-900 rounded-3xl overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-500">
 
-                        <div class="h-64 overflow-hidden">
-
-                            <img src="{{ asset('storage/gambar/museum.jpg') }}"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
-
-                        </div>
-
-                        <div class="p-6">
-
-                            <span
-                                class="px-3 py-1 bg-amber-700/20 border border-amber-700 rounded-full text-xs text-amber-300">
-
-                                Senjata Tradisional
-
-                            </span>
-
-                            <h3 class="mt-4 text-xl">
-                                Mandau Mamasa
-                            </h3>
-
-                        </div>
-
-                    </div>
-
-                    <!-- Card -->
-                    <div
-                        class="group bg-[#2b1d13] border border-amber-900 rounded-3xl overflow-hidden shadow-2xl hover:-translate-y-2 transition duration-500">
-
-                        <div class="h-64 overflow-hidden">
-
-                            <img src="{{ asset('storage/gambar/benner.png') }}"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
-
-                        </div>
-
-                        <div class="p-6">
-
-                            <span
-                                class="px-3 py-1 bg-amber-700/20 border border-amber-700 rounded-full text-xs text-amber-300">
-
-                                Kerajinan
-
-                            </span>
-
-                            <h3 class="mt-4 text-xl">
-                                Keranjang Anyaman
-                            </h3>
-
-                        </div>
-
-                    </div>
 
                 </div>
 

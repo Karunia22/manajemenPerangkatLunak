@@ -83,13 +83,13 @@
 
             <div class="max-w-7xl mx-auto px-6">
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
 
                     <!-- Item -->
                     <div class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
 
                         <h2 class="text-4xl font-light text-amber-400">
-                            250+
+                            {{$totalKoleksi}}
                         </h2>
 
                         <p class="mt-3 text-gray-400">
@@ -102,7 +102,7 @@
                     <div class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
 
                         <h2 class="text-4xl font-light text-amber-400">
-                            15
+                            {{$totalKategori}}
                         </h2>
 
                         <p class="mt-3 text-gray-400">
@@ -111,18 +111,7 @@
 
                     </div>
 
-                    <!-- Item -->
-                    <div class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
 
-                        <h2 class="text-4xl font-light text-amber-400">
-                            120+
-                        </h2>
-
-                        <p class="mt-3 text-gray-400">
-                            Artefak Sejarah
-                        </p>
-
-                    </div>
 
                     <!-- Item -->
                     <div class="bg-[#2f2117] border border-amber-900 rounded-3xl p-8 text-center shadow-xl">
@@ -152,7 +141,7 @@
                 <div class="mb-16">
 
                     <h2 class="text-4xl font-light text-amber-400">
-                        Koleksi Unggulan
+                        Koleksi museum
                     </h2>
 
                     <p class="text-gray-400 mt-4">
@@ -165,77 +154,48 @@
                 <div class="grid md:grid-cols-3 gap-10">
 
                     <!-- Card -->
-                    <div
-                        class="bg-[#2b1d13] border border-amber-900 rounded-3xl overflow-hidden shadow-2xl group hover:-translate-y-2 transition duration-500">
+                    @forelse ($koleksi as $item => $index)
+                    <a href="{{ route('detailKoleksi', $index->id)}}">
+                        <div
+                            class="bg-[#2b1d13] border border-amber-900 rounded-3xl overflow-hidden shadow-2xl group hover:-translate-y-2 transition duration-500">
 
-                        <div class="h-72 overflow-hidden">
+                            <div class="h-72 overflow-hidden">
 
-                            <img src="{{ asset('storage/gambar/museum.jpg') }}"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
+                                <img src="{{ asset('storage/'. $index->gambar) }}"
+                                    class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                                    alt="">
+
+                            </div>
+
+                            <div class="p-8">
+
+                                <span
+                                    class="px-3 py-1 bg-amber-700/20 border border-amber-700 rounded-full text-xs text-amber-300">
+
+                                    {{$index->kategori->jenis_kategori}}
+
+                                </span>
+
+                                <h3 class="mt-5 text-2xl">
+                                    {{$index->nama_koleksi}}
+                                </h3>
+
+                                <p class="mt-4 text-gray-400 leading-relaxed">
+
+                                    {{$index->detail->deskripsi}}
+                                </p>
+
+                            </div>
 
                         </div>
+                    </a>
+                    @empty
 
-                        <div class="p-8">
-
-                            <span
-                                class="px-3 py-1 bg-amber-700/20 border border-amber-700 rounded-full text-xs text-amber-300">
-
-                                Pakaian Adat
-
-                            </span>
-
-                            <h3 class="mt-5 text-2xl">
-                                Baju Pokko
-                            </h3>
-
-                            <p class="mt-4 text-gray-400 leading-relaxed">
-
-                                Pakaian adat khas Mamasa yang digunakan
-                                pada berbagai acara budaya dan upacara adat.
-
-                            </p>
-
-                        </div>
-
-                    </div>
+                    @endforelse
 
                     <!-- Card -->
 
 
-                    <!-- Card -->
-                    <div
-                        class="bg-[#2b1d13] border border-amber-900 rounded-3xl overflow-hidden shadow-2xl group hover:-translate-y-2 transition duration-500">
-
-                        <div class="h-72 overflow-hidden">
-
-                            <img src="{{ asset('storage/gambar/museum.jpg') }}"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="">
-
-                        </div>
-
-                        <div class="p-8">
-
-                            <span
-                                class="px-3 py-1 bg-amber-700/20 border border-amber-700 rounded-full text-xs text-amber-300">
-
-                                Kerajinan
-
-                            </span>
-
-                            <h3 class="mt-5 text-2xl">
-                                Anyaman Tradisional
-                            </h3>
-
-                            <p class="mt-4 text-gray-400 leading-relaxed">
-
-                                Kerajinan anyaman khas Mamasa yang diwariskan
-                                turun-temurun oleh masyarakat lokal.
-
-                            </p>
-
-                        </div>
-
-                    </div>
 
                 </div>
 

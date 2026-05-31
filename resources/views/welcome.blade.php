@@ -78,10 +78,7 @@
 
                 <div class="mt-10 flex gap-4">
 
-                    <a href="#koleksi"
-                        class="bg-amber-700 hover:bg-amber-600 px-8 py-4 rounded-xl text-lg transition shadow-lg">
-                        Jelajahi Koleksi
-                    </a>
+
 
                     <a href="#tentang"
                         class="border border-amber-600 hover:bg-amber-800/40 px-8 py-4 rounded-xl text-lg transition">

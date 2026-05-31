@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Table;
 use Illuminate\Database\Eloquent\Model;
 
-#[Table('detail_koleksi')]
-#[Fillable(['deskripsi', 'sejarah', 'asal_daerah', 'id_koleksi'])]
-class DetailKoleksi extends Model
+#[Table('pengunjung_logs')]
+#[Fillable(['ip_address', 'tanggal'])]
+class PengunjungLog extends Model
 {
     //
-
 }

@@ -121,16 +121,6 @@
 
     </div>
 
-    <!-- FOOTER -->
-    <div class="p-6 border-t border-amber-900/30 bg-[#140d09]/80 backdrop-blur-md">
 
-        <button
-            class="w-full bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 py-4 rounded-2xl transition-all duration-300 shadow-lg">
-
-            Keluar
-
-        </button>
-
-    </div>
 
 </aside>

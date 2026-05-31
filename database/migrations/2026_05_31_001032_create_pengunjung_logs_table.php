@@ -10,14 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('koleksi', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('nama_koleksi');
-            $table->string('gambar');
-            $table->foreignId('id_user')
-                ->nullable()
-                ->constrained('users')
-                ->onDelete('set null');
+        Schema::create('pengunjung_logs', function (Blueprint $table) {
+            $table->id();
+            $table->string('ip_address', 45); // Untuk mendeteksi keunikan pengunjung hari ini
+            $table->date('tanggal');               // Tanggal akses (Format: YYYY-MM-DD)
             $table->timestamps();
         });
     }
@@ -27,7 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        //
-        Schema::dropIfExists('koleksi');
+        Schema::dropIfExists('pengunjung_logs');
     }
 };
