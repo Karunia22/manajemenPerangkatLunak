@@ -20,10 +20,6 @@
 
                 </h1>
 
-                <p class="text-xs text-gray-500 mt-1">
-                    Museum Demmatande
-                </p>
-
             </div>
 
         </div>

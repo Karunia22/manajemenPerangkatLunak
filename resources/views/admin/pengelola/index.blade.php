@@ -1,5 +1,19 @@
 @extends('layouts.templatpengelolah')
 @section('content')
+@if (session('success'))
+<div
+    class="max-w-6xl mx-auto mb-6 p-4 bg-gradient-to-r from-amber-800/80 to-amber-700/80 backdrop-blur-md border border-amber-600/40 rounded-2xl flex items-start gap-3 shadow-2xl transition-all duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-amber-300 mt-0.5 shrink-0" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <div>
+        <h4 class="text-sm font-semibold text-amber-100">Berhasil!</h4>
+        <p class="text-xs text-amber-200/90 mt-0.5">{{ session('success') }}</p>
+    </div>
+</div>
+@endif
 <div class="p-4 lg:p-10">
 
 

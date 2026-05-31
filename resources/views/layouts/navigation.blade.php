@@ -88,10 +88,9 @@
 
                         <a href="{{ route('profile.edit') }}"
                             class="block px-5 py-4 text-gray-100 hover:bg-amber-700/20 transition">
-
                             Profile
-
                         </a>
+
 
                         <form method="POST" action="{{ route('logout') }}">
 

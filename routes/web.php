@@ -50,7 +50,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/akunA', [AdminAkunController::class, 'index'])->name('akunA');
     Route::get('/tambahA', [AdminAkunController::class, 'tambah'])->name('tambahA');
     Route::get('/editA/{id}', [AdminAkunController::class, 'edit'])->name('editA');
-
+    Route::get('/admin/api/live-stats', [DashboardController::class, 'getLiveStats'])->name('admin.liveStats');
     Route::patch('/akun/{id}', [AdminAkunController::class, 'update'])
         ->name('akun.update');
 

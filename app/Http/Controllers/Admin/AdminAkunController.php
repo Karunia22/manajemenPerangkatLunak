@@ -36,7 +36,14 @@ class AdminAkunController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8',
+            'password' => 'nullable|min:8|confirmed',
+        ], [
+            'name.required' => 'Username wajib diisi.',
+            'email.required' => 'Email wajib diisi.',
+            'email.email' => 'Format email tidak valid.',
+            'email.unique' => 'Email sudah digunakan.',
+            'password.min' => 'Password minimal 8 karakter.',
+            'password.confirmed' => 'Konfirmasi password tidak cocok.',
         ]);
         // dd($request->all());
         try {
@@ -50,9 +57,11 @@ class AdminAkunController extends Controller
             ]);
             DB::commit();
 
-            return redirect()->route('akunA');
+            return redirect()->route('akunA')->with('success', 'Berhasil membuat akun');
         } catch (Exception $e) {
             DB::rollBack();
+
+            return redirect()->back()->withErrors('error', 'Gagal membuat akun');
         }
     }
 

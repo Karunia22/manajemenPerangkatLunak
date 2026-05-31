@@ -1,18 +1,18 @@
 import Chart from 'chart.js/auto';
 
+// =============================================
+// GRAFIK PENGELOLA - Visitor Chart
+// =============================================
 const ctx = document.getElementById('visitorChart');
-
 if (ctx) {
-    // 1. Ambil data awal dari atribut HTML canvas
     const rawData = ctx.getAttribute('data-stats');
-    let visitorData = rawData ? JSON.parse(rawData) : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let labels = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+    const visitorData = rawData ? JSON.parse(rawData) : Array(12).fill(0);
+    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
 
-    // 2. Buat objek grafik dan simpan ke dalam variabel 'myMuseumChart'
     const myMuseumChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: labels,
+            labels,
             datasets: [{
                 label: 'Jumlah Pengunjung',
                 data: visitorData,
@@ -27,10 +27,10 @@ if (ctx) {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 legend: { labels: { color: '#d1d5db' } }
             },
-            maintainAspectRatio: false,
             scales: {
                 x: {
                     ticks: { color: '#9ca3af' },
@@ -40,13 +40,18 @@ if (ctx) {
                     beginAtZero: true,
                     ticks: {
                         color: '#9ca3af',
-                        callback: function (value) { if (value % 1 === 0) { return value; } }
+                        callback: value => Number.isInteger(value) ? value : null
                     },
                     grid: { color: 'rgba(255,255,255,0.05)' }
                 }
             }
         }
     });
+
+    function updateEl(id, value) {
+        const el = document.getElementById(id);
+        if (el && value !== undefined && value !== null) el.innerText = value;
+    }
 
     function fetchTerbaru() {
         fetch('/pengelola/api/live-stats', {
@@ -55,26 +60,124 @@ if (ctx) {
                 'X-Requested-With': 'XMLHttpRequest'
             }
         })
-            .then(response => {
-                if (response.status === 401 || response.redirected) {
+            .then(res => {
+                if (res.status === 401 || res.redirected) {
                     clearInterval(pollingInterval);
                     window.location.href = '/login';
                     return null;
                 }
-                if (!response.ok) throw new Error('Status: ' + response.status);
-                return response.json();
+                if (!res.ok) throw new Error('Status: ' + res.status);
+                return res.json();
             })
             .then(data => {
                 if (!data) return;
-                const elementTotal = document.getElementById('stat-total-pengunjung');
-                const elementHariIni = document.getElementById('stat-pengunjung-hari-ini');
-                if (elementTotal) elementTotal.innerText = data.total;
-                if (elementHariIni) elementHariIni.innerText = data.hari_ini;
-                myMuseumChart.data.datasets[0].data = data.grafik;
-                myMuseumChart.update();
+
+                // Update card pengunjung
+                updateEl('stat-total-pengunjung', data.total);
+                updateEl('stat-pengunjung-hari-ini', data.hari_ini);
+
+                // ✅ Update 3 card atas
+                updateEl('stat-total-koleksi', data.total_koleksi);
+                updateEl('stat-total-kategori', data.total_kategori);
+                updateEl('stat-koleksi-baru', data.koleksi_baru);
+
+                // ✅ Hanya update grafik jika ada data agar tidak menimpa dengan array kosong
+                const adaData = data.grafik.some(v => v > 0);
+                if (adaData) {
+                    myMuseumChart.data.datasets[0].data = data.grafik;
+                    myMuseumChart.update();
+                }
             })
-            .catch(error => console.error('Gagal memuat data real-time:', error));
+            .catch(err => console.error('Gagal memuat data real-time:', err));
     }
 
     const pollingInterval = setInterval(fetchTerbaru, 5000);
+}
+
+// =============================================
+// GRAFIK ADMIN - Account Chart
+// =============================================
+const accountCtx = document.getElementById('accountChart');
+if (accountCtx) {
+    const dataPengelola = JSON.parse(accountCtx.getAttribute('data-pengelola') || 'null') || Array(12).fill(0);
+    const dataPengunjung = JSON.parse(accountCtx.getAttribute('data-pengunjung') || 'null') || Array(12).fill(0);
+
+    const myAccountChart = new Chart(accountCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+            datasets: [
+                {
+                    label: 'Pengelola',
+                    data: dataPengelola,
+                    backgroundColor: '#a75502',
+                    borderRadius: 10
+                },
+                {
+                    label: 'Pengunjung',
+                    data: dataPengunjung,
+                    backgroundColor: '#1d4ed8',
+                    borderRadius: 10
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { labels: { color: '#d1d5db' } }
+            },
+            scales: {
+                x: {
+                    ticks: { color: '#9ca3af' },
+                    grid: { color: 'rgba(255,255,255,0.05)' }
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: '#9ca3af' },
+                    grid: { color: 'rgba(255,255,255,0.05)' }
+                }
+            }
+        }
+    });
+
+    function updateEl(id, value) {
+        const el = document.getElementById(id);
+        if (el && value !== undefined && value !== null) el.innerText = value;
+    }
+
+    function fetchAkunTerbaru() {
+        fetch('/admin/api/live-stats', {
+            headers: {
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.redirected) {
+                    clearInterval(accountPolling);
+                    window.location.href = '/login';
+                    return null;
+                }
+                return res.json();
+            })
+            .then(data => {
+                if (!data) return;
+
+                updateEl('stat-total-pengelola', data.total_pengelola);
+                updateEl('stat-total-pengunjung', data.total_pengunjung);
+                updateEl('stat-total-user', data.total_user);
+
+                // ✅ Hanya update grafik jika ada data
+                const adaData = data.pengelola.some(v => v > 0) || data.pengunjung.some(v => v > 0);
+                if (adaData) {
+                    myAccountChart.data.datasets[0].data = data.pengelola;
+                    myAccountChart.data.datasets[1].data = data.pengunjung;
+                    myAccountChart.update();
+                }
+            })
+            .catch(err => console.error('Gagal fetch akun:', err));
+    }
+
+    const accountPolling = setInterval(fetchAkunTerbaru, 5000);
 }

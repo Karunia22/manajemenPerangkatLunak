@@ -6,47 +6,28 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
 
         <!-- CARD -->
+        <!-- CARD -->
         <div class="bg-[#2b1d13] border border-amber-900 rounded-3xl p-6 shadow-2xl">
-
-            <p class="text-gray-400 text-sm">
-                Total Akun Pengelola
-            </p>
-
-            <h2 class="mt-4 text-4xl lg:text-5xl font-light text-amber-400">
-
+            <p class="text-gray-400 text-sm">Total Akun Pengelola</p>
+            <h2 class="mt-4 text-4xl lg:text-5xl font-light text-amber-400" id="stat-total-pengelola">
                 {{$pengelola}}
-
             </h2>
-
         </div>
 
         <!-- CARD -->
         <div class="bg-[#2b1d13] border border-amber-900 rounded-3xl p-6 shadow-2xl">
-
-            <p class="text-gray-400 text-sm">
-                Total Akun Pengunjung
-            </p>
-
-            <h2 class="mt-4 text-4xl lg:text-5xl font-light text-blue-400">
-
+            <p class="text-gray-400 text-sm">Total Akun Pengunjung</p>
+            <h2 class="mt-4 text-4xl lg:text-5xl font-light text-blue-400" id="stat-total-pengunjung">
                 {{$pengunjung}}
-
             </h2>
-
         </div>
 
         <!-- CARD -->
         <div class="bg-[#2b1d13] border border-amber-900 rounded-3xl p-6 shadow-2xl">
-
-            <p class="text-gray-400 text-sm">
-                Total Keseluruhan Akun
-            </p>
-
-            <h2 class="mt-4 text-4xl lg:text-5xl font-light text-red-400">
-
+            <p class="text-gray-400 text-sm">Total Keseluruhan Akun</p>
+            <h2 class="mt-4 text-4xl lg:text-5xl font-light text-red-400" id="stat-total-user">
                 {{$user}}
             </h2>
-
         </div>
 
     </div>
@@ -75,42 +56,15 @@
         <!-- CONTENT -->
         <div class="p-6 lg:p-10">
 
-            <!-- CARD -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
 
-
-
-                <div class="bg-[#24170f] border border-amber-900 rounded-3xl p-6">
-
-                    <p class="text-gray-400 text-sm">
-                        User Baru Hari Ini
-                    </p>
-
-                    <h2 class="text-4xl text-green-400 mt-3 font-light">
-                        18
-                    </h2>
-
-                </div>
-
-                <div class="bg-[#24170f] border border-amber-900 rounded-3xl p-6">
-
-                    <p class="text-gray-400 text-sm">
-                        User Aktif
-                    </p>
-
-                    <h2 class="text-4xl text-yellow-400 mt-3 font-light">
-                        320
-                    </h2>
-
-                </div>
-
-            </div>
 
             <!-- CHART -->
             <div class="bg-[#24170f] border border-amber-900 rounded-3xl p-6">
 
-                <div class="h-[400px]">
-                    <canvas id="accountChart"></canvas>
+                <div class="relative w-full h-[400px]">
+                    <canvas id="accountChart" data-pengelola="{{ json_encode($dataPengelola) }}"
+                        data-pengunjung="{{ json_encode($dataPengunjung) }}">
+                    </canvas>
                 </div>
 
             </div>
