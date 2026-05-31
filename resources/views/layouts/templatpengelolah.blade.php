@@ -65,16 +65,6 @@
                         <div x-show="dropdownOpen" @click.away="dropdownOpen = false" x-transition
                             class="absolute right-0 mt-4 w-56 bg-[#2b1d13] border border-amber-900 rounded-2xl shadow-2xl overflow-hidden">
 
-                            @if(auth()->user()->role == 'pengunjung')
-                            <a href="{{ route('profile.edit') }}"
-                                class="block px-5 py-4 text-gray-100 hover:bg-amber-700/20 transition">
-
-                                Profile
-
-                            </a>
-                            @endif
-
-
                             <form method="POST" action="{{ route('logout') }}">
 
                                 @csrf
@@ -87,6 +77,7 @@
                                 </button>
 
                             </form>
+
 
                         </div>
 
