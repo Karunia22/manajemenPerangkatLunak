@@ -16,21 +16,22 @@ class KoleksiController extends Controller
     //
     public function index()
     {
-
+        $title = "Koleksi";
         $koleksi = Koleksi::with([
             'user',
             'kategori',
         ])->latest()->get();
         $totalKoleksi = Koleksi::all()->count();
-
-        return view('pengelolah.koleksi.index', compact(['koleksi', 'totalKoleksi']));
+        // dd($koleksi);
+        return view('pengelolah.koleksi.index', compact(['koleksi', 'totalKoleksi', 'title']));
     }
 
     public function tambah()
     {
+        $title = "Tambah koleksi";
         $kategori = Kategori::all();
 
-        return view('pengelolah.koleksi.tambahKoleksi', compact('kategori'));
+        return view('pengelolah.koleksi.tambahKoleksi', compact('kategori', 'title'));
     }
 
     public function edit()
@@ -40,6 +41,8 @@ class KoleksiController extends Controller
 
     public function validasi(Request $request)
     {
+        
+       // dd($request->all());
         // 1. Validasi DULU sebelum apapun
         $request->validate([
             'nama_koleksi' => 'required|string|max:255',
@@ -98,7 +101,7 @@ class KoleksiController extends Controller
             if ($path && Storage::disk('public')->exists($path)) {
                 Storage::disk('public')->delete($path);
             }
-
+             dd($e->getMessage());
             return redirect()->back()
                 ->withInput()
                 ->with('error', 'Terjadi kesalahan saat menyimpan data.');

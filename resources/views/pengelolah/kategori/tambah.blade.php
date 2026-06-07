@@ -1,5 +1,7 @@
 @extends('layouts.templatpengelolah')
-
+@section('title')
+    <title>{{$title}}</title>
+@endsection
 @section('content')
 @if(session('status'))
 <div id="success-alert"
@@ -210,7 +212,7 @@
                     <!-- DATA KOSONG -->
                     <tr>
 
-                        <td colspan="3" class="px-8 py-16 text-center">
+                        <td colspan="2" class="px-8 py-16 text-center">
 
                             <div class="flex flex-col items-center justify-center">
 

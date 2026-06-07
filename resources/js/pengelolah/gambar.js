@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener('DOMContentLoaded', () => {
 
     const inputGambar = document.getElementById('gambar');
-    const namaFile = document.getElementById('nama-file');
+    const namaFile = document.getElementById('fileName');
 
     if (inputGambar) {
 

@@ -17,6 +17,7 @@ class AdminDasboardController extends Controller
 
     public function index()
     {
+        $title = "Dashboard";
         $user = User::count() - 1; // -1 untuk exclude akun admin
         $pengelola = User::where('role', 'pengelola')->count();
         $pengunjung = $user - $pengelola;
@@ -41,6 +42,7 @@ class AdminDasboardController extends Controller
         }
 
         return view('admin.dashboard', compact(
+            'title',
             'user',
             'pengelola',
             'pengunjung',

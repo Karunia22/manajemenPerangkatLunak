@@ -1,4 +1,7 @@
 <x-guest-layout>
+    <x-slot name="title">
+        {{ $title }}
+    </x-slot>
 
 
     <!-- Logo / Title -->
@@ -56,8 +59,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     {{-- Icon mata tertutup (saat password terlihat) --}}
-                    <svg id="icon-hide-password" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <svg id="icon-hide-password" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3 3l18 18M10.477 10.477A3 3 0 0013.5 13.5M6.228 6.228A10.01 10.01 0 002.458 12c1.274 4.057 5.065 7 9.542 7 1.894 0 3.661-.525 5.168-1.431M9.878 9.878A3 3 0 0114.12 14.12M17.772 17.772A10.01 10.01 0 0021.542 12c-1.274-4.057-5.065-7-9.542-7a9.956 9.956 0 00-4.186.9" />
                     </svg>

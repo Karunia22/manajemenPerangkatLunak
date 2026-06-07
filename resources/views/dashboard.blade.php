@@ -1,5 +1,7 @@
 <x-app-layout>
-
+    <x-slot name="title">
+        {{ $title }}
+    </x-slot>
     <div class="min-h-screen bg-[#1a120b] text-white">
 
         <!-- HERO -->
@@ -246,12 +248,6 @@
                             <li>
                                 <a href="#koleksi" class="hover:text-white">
                                     Koleksi
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="#tentang" class="hover:text-white">
-                                    Tentang
                                 </a>
                             </li>
 

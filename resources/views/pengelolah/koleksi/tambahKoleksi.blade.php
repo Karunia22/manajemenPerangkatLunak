@@ -1,8 +1,18 @@
 @extends('layouts.templatpengelolah')
-
+@section('title')
+    <title>{{$title}}</title>
+@endsection
 @section('content')
 <div class="p-4 lg:p-10">
-
+    @if ($errors->any())
+    <div class="bg-red-500 text-white p-4 rounded">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <!-- FORM CARD -->
     <div
         class="max-w-6xl mx-auto bg-[#2b1d13]/90 backdrop-blur-md border border-amber-900/40 rounded-[2rem] shadow-2xl overflow-hidden">

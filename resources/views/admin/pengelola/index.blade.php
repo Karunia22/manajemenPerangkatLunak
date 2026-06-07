@@ -1,4 +1,7 @@
 @extends('layouts.templatpengelolah')
+@section('title')
+    <title>{{$title}}</title>
+@endsection
 @section('content')
 @if (session('success'))
 <div

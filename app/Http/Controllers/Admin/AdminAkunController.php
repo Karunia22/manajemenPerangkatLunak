@@ -14,21 +14,24 @@ class AdminAkunController extends Controller
     //
     public function index()
     {
+        $title = "Akun pengelolah";
         $user = User::where('role', 'pengelola')->get();
 
-        return view('admin.pengelola.index', compact('user'));
+        return view('admin.pengelola.index', compact('user', 'title'));
     }
 
     public function tambah()
     {
-        return view('admin.pengelola.tambah');
+        $title = "Tambah akun";
+        return view('admin.pengelola.tambah', compact('title'));
     }
 
     public function edit($id)
     {
+        $title = "Edit akun";
         $user = User::findOrFail($id);
 
-        return view('admin.pengelola.edit', compact('user'));
+        return view('admin.pengelola.edit', compact('user', 'title'));
     }
 
     public function validasi(Request $request)

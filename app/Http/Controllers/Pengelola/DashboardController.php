@@ -14,6 +14,7 @@ class DashboardController extends Controller
     //
     public function index()
     {
+        $title = "Dashboard";
         $totalKoleksi = Koleksi::count();
         $totalKategori = Kategori::count();
 
@@ -26,24 +27,22 @@ class DashboardController extends Controller
         // --------------------------------------------------------
         // Kita hanya cek apakah IP ini sudah masuk hari ini atau belum
         if (Auth::check() && Auth::user()->role === 'pengunjung') {
-            $sudahTercatat = PengunjungLog::where('ip_address', $ip)
-                ->where('tanggal', $hariIni)
+           $sudahTercatat = PengunjungLog::where('ip_address', $ip)
+              ->where('tanggal', today())
                 ->exists();
 
             if (! $sudahTercatat) {
                 PengunjungLog::create([
                     'ip_address' => $ip,
-                    'tanggal' => $hariIni,
                 ]);
             }
         }
         // --------------------------------------------------------
-
         $totalPengunjung = PengunjungLog::count();
-        $pengunjungHariIni = PengunjungLog::where('tanggal', $hariIni)->count();
+        $pengunjungHariIni = PengunjungLog::whereDate('created_at', today())->count();
 
         $logBulanan = PengunjungLog::select(
-            DB::raw('MONTH(tanggal) as bulan'),
+            DB::raw('MONTH(created_at) as bulan'),
             DB::raw('COUNT(*) as jumlah')
         )
             ->whereYear('tanggal', now()->year)
@@ -56,7 +55,7 @@ class DashboardController extends Controller
             $dataGrafik[$log->bulan - 1] = $log->jumlah;
         }
 
-        return view('pengelolah.dashboard', compact('totalPengunjung', 'pengunjungHariIni', 'dataGrafik', 'totalKoleksi', 'totalKategori', 'koleksiBaru'));
+        return view('pengelolah.dashboard', compact('totalPengunjung', 'pengunjungHariIni', 'dataGrafik', 'totalKoleksi', 'totalKategori', 'koleksiBaru', 'title'));
     }
 
     public function getLiveStats()

@@ -13,8 +13,8 @@ return new class extends Migration {
         //
         Schema::create('detail_koleksi', function (Blueprint $table) {
             $table->id('id');
-            $table->string('deskripsi');
-            $table->string('sejarah');
+            $table->longText('deskripsi');
+            $table->longText('sejarah');
             $table->string('asal_daerah');
             $table->foreignId('id_koleksi')->constrained('koleksi')->onDelete('cascade');
             $table->timestamps();

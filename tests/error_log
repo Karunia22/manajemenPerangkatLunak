@@ -1,0 +1,8 @@
+[03-Jun-2026 09:01:46 UTC] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Testing\TestCase' not found in /home/museumma/public_html/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/museumma/public_html/tests/TestCase.php on line 7
+[03-Jun-2026 09:01:46 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function pest() in /home/museumma/public_html/tests/Pest.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/museumma/public_html/tests/Pest.php on line 17

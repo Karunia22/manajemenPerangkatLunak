@@ -1,5 +1,7 @@
 <x-app-layout>
-
+<x-slot name="title">
+        {{ $title }}
+    </x-slot>
     <div class="min-h-screen bg-[#1a120b] text-white">
 
         <!-- HERO -->
@@ -179,6 +181,95 @@
             </div>
 
         </section>
+
+        <footer class="bg-black border-t border-amber-900 py-14">
+
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="grid md:grid-cols-3 gap-10">
+
+                    <!-- About -->
+                    <div>
+
+                        <h2 class="text-2xl font-light tracking-widest text-amber-400">
+
+                            Museum Demmatande
+
+                        </h2>
+
+                        <p class="mt-5 text-gray-400 leading-relaxed">
+
+                            Platform digital untuk menjelajahi
+                            budaya dan sejarah Kabupaten Mamasa.
+
+                        </p>
+
+                    </div>
+
+                    <!-- Navigation -->
+                    <div>
+
+                        <h3 class="text-xl text-amber-400 mb-5">
+                            Navigasi
+                        </h3>
+
+                        <ul class="space-y-3 text-gray-400">
+
+                            <li>
+                                <a href="#" class="hover:text-white">
+                                    Beranda
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#koleksi" class="hover:text-white">
+                                    Koleksi
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Contact -->
+                    <div>
+
+                        <h3 class="text-xl text-amber-400 mb-5">
+                            Kontak
+                        </h3>
+
+                        <div class="space-y-3 text-gray-400">
+
+                            <p>
+                                Mamasa, Sulawesi Barat
+                            </p>
+
+                            <p>
+                                info@museum.id
+                            </p>
+
+                            <p>
+                                0821 0000 0000
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Bottom -->
+                <div class="border-t border-gray-800 mt-14 pt-8 text-center text-gray-500">
+
+                    © {{ date('Y') }}
+                    Museum Negeri Demmatande Mamasa —
+                    Universitas Sulawesi Barat
+
+                </div>
+
+            </div>
+
+        </footer>
 
     </div>
 

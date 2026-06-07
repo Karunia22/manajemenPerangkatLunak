@@ -13,18 +13,20 @@ class KategoriController extends Controller
     //
     public function tambahKategori()
     {
+        $title = "Kategori";
         $kategori = Kategori::all();
 
-        return view('pengelolah.kategori.tambah', compact('kategori'));
+        return view('pengelolah.kategori.tambah', compact('kategori','title'));
     }
 
     public function edit($id)
     {
         // Cari data kategori berdasarkan ID, jika tidak ada tampilkan 404
+        $title = "Edit kategori";
         $kategori = Kategori::findOrFail($id);
 
         // Lempar data kategori ke file blade form edit tadi
-        return view('pengelolah.kategori.edit', compact('kategori'));
+        return view('pengelolah.kategori.edit', compact('kategori', 'title'));
     }
 
     public function validasi(Request $request)

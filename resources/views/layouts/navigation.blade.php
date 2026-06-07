@@ -74,10 +74,6 @@
                                 {{ Auth::user()->name }}
                             </div>
 
-                            <div class="text-xs text-gray-300">
-                                Administrator
-                            </div>
-
                         </div>
 
                     </button>
@@ -152,11 +148,6 @@
 
             </a>
 
-            <a href="#tentang" class="block text-gray-100 hover:text-amber-400 transition">
-
-                Tentang
-
-            </a>
 
             <a href="{{ route('profile.edit') }}" class="block text-gray-100 hover:text-amber-400 transition">
 

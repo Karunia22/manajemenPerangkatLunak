@@ -1,5 +1,7 @@
 @extends('layouts.templatpengelolah')
-
+@section('title')
+    <title>{{$title}}</title>
+@endsection
 @section('content')
 <div class="bg-[#2b1d13] border border-amber-900 rounded-[2rem] shadow-2xl overflow-hidden">
 

@@ -1,0 +1,28 @@
+[03-Jun-2026 09:01:39 UTC] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.4.0". You are running 7.4.33. in /home/museumma/public_html/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/museumma/public_html/vendor/composer/autoload_real.php(25): require()
+#1 /home/museumma/public_html/vendor/autoload.php(22): ComposerAutoloaderInit74199c0a3889e8d1256a25f93805ef56::getLoader()
+#2 /home/museumma/public_html/public/index.php(14): require('/home/museumma/...')
+#3 {main}
+  thrown in /home/museumma/public_html/vendor/composer/platform_check.php on line 22
+[03-Jun-2026 09:20:20 UTC] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.4.0". You are running 7.4.33. in /home/museumma/public_html/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/museumma/public_html/vendor/composer/autoload_real.php(25): require()
+#1 /home/museumma/public_html/vendor/autoload.php(22): ComposerAutoloaderInit74199c0a3889e8d1256a25f93805ef56::getLoader()
+#2 /home/museumma/public_html/public/index.php(14): require('/home/museumma/...')
+#3 {main}
+  thrown in /home/museumma/public_html/vendor/composer/platform_check.php on line 22
+[03-Jun-2026 09:26:15 UTC] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.4.0". You are running 7.4.33. in /home/museumma/public_html/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/museumma/public_html/vendor/composer/autoload_real.php(25): require()
+#1 /home/museumma/public_html/vendor/autoload.php(22): ComposerAutoloaderInit74199c0a3889e8d1256a25f93805ef56::getLoader()
+#2 /home/museumma/public_html/public/index.php(14): require('/home/museumma/...')
+#3 {main}
+  thrown in /home/museumma/public_html/vendor/composer/platform_check.php on line 22
+[03-Jun-2026 09:26:28 UTC] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.4.0". You are running 7.4.33. in /home/museumma/public_html/vendor/composer/platform_check.php:22
+Stack trace:
+#0 /home/museumma/public_html/vendor/composer/autoload_real.php(25): require()
+#1 /home/museumma/public_html/vendor/autoload.php(22): ComposerAutoloaderInit74199c0a3889e8d1256a25f93805ef56::getLoader()
+#2 /home/museumma/public_html/public/index.php(14): require('/home/museumma/...')
+#3 {main}
+  thrown in /home/museumma/public_html/vendor/composer/platform_check.php on line 22

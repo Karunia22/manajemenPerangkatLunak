@@ -13,12 +13,13 @@ class DetailKoleksiController extends Controller
     //
     public function detail($id)
     {
+        $title = "Detail koleksi";
         $koleksi = Koleksi::with([
             'kategori',
             'detail',
         ])->findOrFail($id);
 
-        return view('pengelolah.detailKoleksi.index', compact('koleksi'));
+        return view('pengelolah.detailKoleksi.index', compact('koleksi', 'title'));
     }
 
     public function update(Request $request, $id)

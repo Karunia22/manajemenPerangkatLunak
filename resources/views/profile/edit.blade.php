@@ -1,4 +1,7 @@
 <x-app-layout>
+    <x-slot name="title">
+        {{ $title }}
+    </x-slot>
 
     <div class="min-h-screen bg-[#1a120b] text-white pt-20">
 
