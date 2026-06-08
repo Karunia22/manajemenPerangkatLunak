@@ -7,6 +7,108 @@
     <title>Museum Budaya Mamasa</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- NAVBAR -->
+    <style>
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            padding: 1rem 1.5rem 1.25rem;
+            background: rgba(42, 27, 18, 0.97);
+            border-top: 1px solid rgba(180, 100, 30, 0.5);
+            gap: 0;
+        }
+
+        .mobile-menu a {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(180, 100, 30, 0.2);
+            color: #e5d5c0;
+            text-decoration: none;
+            transition: color 0.2s;
+            font-size: 15px;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+            margin-top: 0.5rem;
+        }
+
+        .mobile-menu a:hover {
+            color: #f59e0b;
+        }
+
+        .mobile-menu .btn-login {
+            border: 1px solid #d97706;
+            padding: 0.65rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 0.5rem;
+            color: #fbbf24;
+        }
+
+        .mobile-menu .btn-login:hover {
+            background: rgba(146, 64, 14, 0.4);
+        }
+
+        .mobile-menu .btn-dashboard {
+            background: #92400e;
+            padding: 0.65rem 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 0.5rem;
+            color: white;
+        }
+
+        .mobile-menu .btn-dashboard:hover {
+            background: #b45309;
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none !important;
+            }
+
+            .hamburger {
+                display: flex !important;
+            }
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    </style>
 
 </head>
 
@@ -15,25 +117,15 @@
     <!-- NAVBAR -->
     <nav class="fixed top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-
             <h1 class="text-2xl font-light tracking-widest">
                 Museum Mamasa
             </h1>
 
-            <div class="flex items-center gap-4">
-
-                <a href="#tentang" class="hover:text-amber-400 transition">
-                    Tentang
-                </a>
-
-                <a href="#jadwal" class="hover:text-amber-400 transition">
-                    Jadwal
-                </a>
-
-                <a href="#lokasi" class="hover:text-amber-400 transition">
-                    Lokasi
-                </a>
-
+            {{-- Menu Desktop --}}
+            <div class="nav-links">
+                <a href="#tentang" class="hover:text-amber-400 transition">Tentang</a>
+                <a href="#jadwal" class="hover:text-amber-400 transition">Jadwal</a>
+                <a href="#lokasi" class="hover:text-amber-400 transition">Lokasi</a>
                 @auth
                 <a href="{{ route('dashboard') }}"
                     class="bg-amber-700 hover:bg-amber-600 px-5 py-2 rounded-lg transition">
@@ -45,10 +137,29 @@
                     Login
                 </a>
                 @endauth
-
             </div>
+
+            {{-- Tombol Hamburger --}}
+            <button class="hamburger" id="hamburger-btn" aria-label="Buka menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+
+        {{-- Menu Mobile --}}
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#tentang" onclick="tutupMenu()">Tentang</a>
+            <a href="#jadwal" onclick="tutupMenu()">Jadwal</a>
+            <a href="#lokasi" onclick="tutupMenu()">Lokasi</a>
+            @auth
+            <a href="{{ route('dashboard') }}" class="btn-dashboard">Dashboard</a>
+            @else
+            <a href="{{ route('login') }}" class="btn-login">Login</a>
+            @endauth
         </div>
     </nav>
+
 
     <!-- HERO SECTION -->
     <section class="relative min-h-screen bg-cover bg-center flex items-center pt-24" style="
@@ -308,6 +419,30 @@
 
     </footer>
 
+    <script>
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburgerBtn.addEventListener('click', function () {
+            const isOpen = mobileMenu.style.display === 'flex';
+            if (isOpen) {
+                tutupMenu();
+            } else {
+                mobileMenu.style.display = 'flex';
+                hamburgerBtn.classList.add('open');
+            }
+        });
+
+        function tutupMenu() {
+            mobileMenu.style.display = 'none';
+            hamburgerBtn.classList.remove('open');
+        }
+        window.addEventListener('resize', function () {
+            if (window.innerWidth >= 768) {
+                tutupMenu();
+            }
+        });
+    </script>
 </body>
 
 </html>

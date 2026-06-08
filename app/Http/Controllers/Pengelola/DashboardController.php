@@ -8,27 +8,33 @@ use App\Models\Koleksi;
 use App\Models\PengunjungLog;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Video;          // Tambahkan ini
+use App\Models\VideoKategori;
 
 class DashboardController extends Controller
 {
     //
     public function index()
     {
-        $title = "Dashboard";
+        $title = 'Dashboard';
+
+        // Statistik Koleksi Artefak
         $totalKoleksi = Koleksi::count();
         $totalKategori = Kategori::count();
-
         $koleksiBaru = Koleksi::where('created_at', '>=', now()->subDays(7))->count();
+
+        // Statistik Video Budaya (Tambahan Baru)
+        $totalVideo = Video::count();
+        $totalKategoriVideo = VideoKategori::count();
+        $videoBaru = Video::where('created_at', '>=', now()->subDays(7))->count();
+
         $ip = request()->ip();
         $hariIni = now()->toDateString();
 
-        // --------------------------------------------------------
-        // SEMENTARA: MATIKAN FILTER ROLE UNTUK TESTING
-        // --------------------------------------------------------
-        // Kita hanya cek apakah IP ini sudah masuk hari ini atau belum
+        // Logika Pencatatan Pengunjung
         if (Auth::check() && Auth::user()->role === 'pengunjung') {
-           $sudahTercatat = PengunjungLog::where('ip_address', $ip)
-              ->where('tanggal', today())
+            $sudahTercatat = PengunjungLog::where('ip_address', $ip)
+                ->where('tanggal', today())
                 ->exists();
 
             if (! $sudahTercatat) {
@@ -37,7 +43,7 @@ class DashboardController extends Controller
                 ]);
             }
         }
-        // --------------------------------------------------------
+
         $totalPengunjung = PengunjungLog::count();
         $pengunjungHariIni = PengunjungLog::whereDate('created_at', today())->count();
 
@@ -55,7 +61,19 @@ class DashboardController extends Controller
             $dataGrafik[$log->bulan - 1] = $log->jumlah;
         }
 
-        return view('pengelolah.dashboard', compact('totalPengunjung', 'pengunjungHariIni', 'dataGrafik', 'totalKoleksi', 'totalKategori', 'koleksiBaru', 'title'));
+        // Kirim variabel baru ke view menggunakan compact()
+        return view('pengelolah.dashboard', compact(
+            'totalPengunjung',
+            'pengunjungHariIni',
+            'dataGrafik',
+            'totalKoleksi',
+            'totalKategori',
+            'koleksiBaru',
+            'totalVideo',
+            'totalKategoriVideo',
+            'videoBaru',
+            'title'
+        ));
     }
 
     public function getLiveStats()

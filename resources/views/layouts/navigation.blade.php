@@ -48,6 +48,11 @@
                         Koleksi
 
                     </a>
+                    <a href="{{ route('visitorVideo') }}" class="text-gray-100 hover:text-amber-400 transition">
+
+                        Video
+
+                    </a>
 
                 </div>
 

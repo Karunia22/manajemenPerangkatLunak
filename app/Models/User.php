@@ -35,4 +35,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Koleksi::class);
     }
+
+    public function video(){
+        return $this->hasMany(Video::class);
+    }
 }
